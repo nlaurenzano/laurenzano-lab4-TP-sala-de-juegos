@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+.header div {
+
+}
+
 .dark {
   font-family: 'Montserrat', sans-serif;
   color: #ff005a;
@@ -43,10 +47,12 @@
 }
 .underlay-photo {
   animation: hue-rotate 6s infinite;
-/*  background: url('https://31.media.tumblr.com/41c01e3f366d61793e5a3df70e46b462/tumblr_n4vc8sDHsd1st5lhmo1_1280.jpg');*/
-  background: url('/assets/monkey-graffitti-1920x1080.jpg');
-  background-size: cover;
+  background: url('/assets/monkey-graffitti.jpg') no-repeat center;
+/*  background: url('/assets/monkey-graffitti.jpg') no-repeat fixed center;*/
+  background-size: 500px;
+  background-color: black;
   -webkit-filter: grayscale(30%);
+  opacity: 0.7;
   z-index: -1;
 }
 .underlay-black {

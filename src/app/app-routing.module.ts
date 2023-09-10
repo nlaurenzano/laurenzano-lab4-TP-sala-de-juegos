@@ -7,25 +7,21 @@ import { WhoamiComponent } from './components/whoami/whoami.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
-  {
-    path:"", redirectTo:'/home', pathMatch:'full'
-  },
-  {
-    path:"home",
-    component: HomeComponent
-  },
-  {
-    path:"login",
-    component: LoginComponent
-  },
-  {
-    path:"whoami",
-    component: WhoamiComponent
-  },
-  {
-    path:"**",
-    component: NotFoundComponent
-  }
+    {
+      path:"", redirectTo:'/home', pathMatch:'full'
+    },
+    {
+      path:"home", component: HomeComponent
+    },
+    {
+      path:"login", component: LoginComponent
+    },
+    {
+      path:"whoami", component: WhoamiComponent
+    },
+    {
+      path:"**", component: NotFoundComponent
+    }
   ];
 
 @NgModule({
