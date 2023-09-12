@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'laurenzano-lab4-TP-sala-de-juegos';
+
+  
 }
+
