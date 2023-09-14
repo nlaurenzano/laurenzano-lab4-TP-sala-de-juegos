@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import { Router } from '@angular/router';
 
 import { Usuario } from '../../shared/usuario';
@@ -10,8 +10,7 @@ import { Usuario } from '../../shared/usuario';
 })
 export class LoginComponent implements OnInit {
 
-  // @Input() usuario!: Usuario;
-  @Input() usuario = new Usuario();
+  usuario = new Usuario();
 
 
   ngOnInit() {
@@ -31,7 +30,7 @@ export class LoginComponent implements OnInit {
       this.usuario.clave = '';
         // this._router.navigate(['/home'])
     } else {
-      console.log('Credenciales inválidas. Andá pallá.');
+      console.log('Credenciales inválidas.');
         // this._router.navigate(['/not-found'])
     }
   }
