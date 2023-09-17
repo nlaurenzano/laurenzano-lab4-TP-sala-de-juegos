@@ -1,16 +1,23 @@
 {
-  "hosting": {
-    "public": "dist/laurenzano-lab4-tp-sala-de-juegos",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
+  "hosting": [
+    {
+      "public": "dist/laurenzano-lab4-tp-sala-de-juegos",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "laurenzano-lab4-TP-sala-de-juegos",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
 }

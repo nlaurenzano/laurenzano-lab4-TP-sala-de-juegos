@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // import { Router } from '@angular/router';
 
+// import { Auth, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Auth, getAuth, signInWithEmailAndPassword } from "@angular/fire/auth";
 import { Usuario } from '../../shared/usuario';
 
 @Component({
@@ -10,8 +12,26 @@ import { Usuario } from '../../shared/usuario';
 })
 export class LoginComponent implements OnInit {
 
-  usuario = new Usuario();
 
+  // private  auth: Auth = inject(Auth);
+  // user$ = user(this.auth);
+
+  // login() {
+  //   signInWithEmailAndPassword(this.auth, this.usuario.nombre, this.usuario.clave)
+  //     .then((userCredential) => {
+  //       // Signed in 
+  //       const user = userCredential.user;
+  //       // ...
+  //   })
+  //   .catch((error) => {
+  //     const errorCode = error.code;
+  //     const errorMessage = error.message;
+  //   });
+  // }
+
+
+
+  usuario = new Usuario();
 
   ngOnInit() {
     localStorage.setItem('admin','123');
@@ -34,6 +54,5 @@ export class LoginComponent implements OnInit {
         // this._router.navigate(['/not-found'])
     }
   }
-
 
 }
