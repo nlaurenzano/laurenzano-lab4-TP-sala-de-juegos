@@ -6,12 +6,13 @@
     </span>
   </p>
   
-  <input name="nombre" type="email" class="login-username" autofocus="true" required="true" placeholder="Username" [(ngModel)]="usuario.nombre" />
-  <input name="clave" type="password" class="login-password" required="true" placeholder="Password" [(ngModel)]="usuario.clave" />
+  <input name="nombre" type="email" class="login-username" autofocus="true" required="true" placeholder="Username" />
 
-  <!-- <input type="submit" name="Login" value="Login" class="login-submit" /> -->
-  <input type="button" name="Login" value="Login" class="login-submit" (click)="validarUsuario()" />
+
+  <input name="clave" type="password" class="login-password" required="true" placeholder="Password" />
+
+  <input type="button" name="Login" value="Login" class="login-submit" (click)="authService.signIn(nombre.value, clave.value)" />
+
+
 </form>
 <!-- <a href="#" class="login-forgot-pass">forgot password?</a> -->
-<!-- <div class="underlay-photo"></div>
-<div class="underlay-black"></div>  -->
