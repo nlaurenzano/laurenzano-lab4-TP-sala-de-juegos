@@ -1,18 +1,21 @@
-<form class="login-form">
-  <p class="login-text">
+<form class="dark-form">
+  <p class="dark-text">
     <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="fa fa-lock fa-stack-1x"></i>
     </span>
   </p>
   
-  <input name="nombre" type="email" class="login-username" autofocus="true" required="true" placeholder="Username" />
+  <input name="nombre" #nombre type="email" class="dark-username" autofocus="true" required="true" placeholder="Username" />
 
+  <input name="clave" #clave type="password" class="dark-password" required="true" placeholder="Password" />
 
-  <input name="clave" type="password" class="login-password" required="true" placeholder="Password" />
+  <input type="button" name="Login" value="Ingresar" class="dark-submit" (click)="authenticationService.signIn(nombre.value, clave.value)" />
 
-  <input type="button" name="Login" value="Login" class="login-submit" (click)="authService.signIn(nombre.value, clave.value)" />
-
+  <div class="dark">
+    <h3>¿Primera vez por aquí?</h3>
+    <input type="button" routerLink="/registro" value="Registrarse" class="dark-submit" />
+  </div>
 
 </form>
-<!-- <a href="#" class="login-forgot-pass">forgot password?</a> -->
+<!-- <a href="#" class="dark-forgot-pass">forgot password?</a> -->

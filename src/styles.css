@@ -4,6 +4,10 @@
 
 }
 
+h3 {
+  text-align: center;
+}
+
 .dark {
   font-family: 'Montserrat', sans-serif;
   color: #ff005a;

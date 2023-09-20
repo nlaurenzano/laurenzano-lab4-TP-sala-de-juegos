@@ -1,44 +1,23 @@
-<h2>Rehacer esto con mi diseño</h2>
+<form class="dark-form">
+  <p class="dark-text">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-lock fa-stack-1x"></i>
+    </span>
+  </p>
+  
+  <input name="nombre" #nombre type="text" class="dark-username" autofocus="true" required="true" placeholder="Nombre" />
+  
+  <input name="email" #email type="email" class="dark-username" autofocus="true" required="true" placeholder="Email" />
 
+  <input name="clave" #clave type="password" class="dark-password" required="true" placeholder="Password" />
 
-<div class="displayTable">
-  <div class="displayTableCell">
-    <div class="authBlock">
-      <h3>Sign Up</h3>
-      <div class="formGroup">
-        <input
-          type="email"
-          class="formControl"
-          placeholder="Email Address"
-          #userEmail
-          required
-        />
-      </div>
-      <div class="formGroup">
-        <input
-          type="password"
-          class="formControl"
-          placeholder="Password"
-          #userPwd
-          required
-        />
-      </div>
-      <div class="formGroup">
-        <input
-          type="button"
-          class="btn btnPrimary"
-          value="Sign Up"
-          (click)="authService.SignUp(userEmail.value, userPwd.value)"
-        />
-      </div>
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
-    <div class="redirectToLogin">
-      <span
-        >Already have an account?
-        <span class="redirect" routerLink="/sign-in">Log In</span></span
-      >
-    </div>
+  <input type="button" name="Registrarse" value="Registrarse" class="dark-submit" (click)="authenticationService.signUp(email.value, nombre.value, clave.value)" />
+
+  <div class="dark">
+    <h3>¿Ya te has registrado?</h3>
+    <input type="button" routerLink="/login" value="Ingresar" class="dark-submit" />
   </div>
-</div>
+
+</form>
+<!-- <a href="#" class="dark-forgot-pass">forgot password?</a> -->

@@ -3,6 +3,7 @@ import { Usuario } from './usuario';
 
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import * as auth from 'firebase/auth';
+
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 
-export class AuthService {
+export class AuthenticationService {
   datosUsuario: any; // Guarda datos del usuario logueado
 
   constructor(
@@ -37,7 +38,9 @@ export class AuthService {
     return this.afAuth
       .signInWithEmailAndPassword(email, clave)
       .then((resultado) => {
-        this.setDatosUsuario(resultado.usuario);
+        // TODO: log de ingreso
+
+        // Login del usuario y redirección
         this.afAuth.authState.subscribe((usuario) => {
           if (usuario) {
             this.router.navigate(['home']);
@@ -45,23 +48,56 @@ export class AuthService {
         });
       })
       .catch((error) => {
-        // window.alert(error.message);
-        window.alert('error en login');
+        let mensaje: string;
+        switch(error.code) {
+          case "auth/invalid-email":
+            mensaje = "Formato de correo inválido";
+            break;
+          case "auth/user-disabled":
+            mensaje = "Usuario deshabilitado";
+            break;
+          default:
+            mensaje = "Usuario o clave incorrectos";
+        } 
+        // TODO: nada de alerts!
+        window.alert(mensaje);
       });
   }
 
-  // Registro con email/clave
-  SignUp(email: string, clave: string) {
+  // Registro con email, nombre y clave
+  signUp(email: string, nombre: string, clave: string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, clave)
       .then((resultado) => {
-        // Llamada a SendVerificaitonMail() cuando se registra un usuario nuevo
-        // this.SendVerificationMail();
-        this.setDatosUsuario(resultado.usuario);
+        this.setDatosUsuario(resultado.user, nombre);
+        
+        // TODO: log de ingreso
+
+        // Login del usuario y redirección
+        this.afAuth.authState.subscribe((usuario) => {
+          if (usuario) {
+            this.router.navigate(['home']);
+          }
+        });
+
       })
       .catch((error) => {
-        // window.alert(error.message);
-        window.alert('error en registro');
+        let mensaje: string;
+        switch(error.code) {
+          case "auth/invalid-email":
+            mensaje = "Formato de correo inválido";
+            break;
+          case "auth/email-already-in-use":
+            mensaje = "El correo ingresado ya está en uso";
+            break;
+          case "auth/weak-password":
+            mensaje = "La clave no es segura";
+            break;
+          default:
+            mensaje = "Ocurrió un error inesperado";
+        } 
+        // TODO: nada de alerts!
+        window.alert(mensaje);
       });
   }
 
@@ -75,16 +111,16 @@ export class AuthService {
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
 
-  setDatosUsuario(usuario: any) {
+  setDatosUsuario(user: any, nombre: string) {
     const refUsuario: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${usuario.uid}`
+      `usuarios/${user.uid}`
     );
-    const userData: User = {
-      uid: usuario.uid,
-      email: usuario.email,
-      nombre: usuario.displayName,
+    const datosUsuario: Usuario = {
+      uid: user.uid,
+      email: user.email,
+      nombre: nombre
     };
-    return refUsuario.set(userData, {
+    return refUsuario.set(datosUsuario, {
       merge: true,
     });
   }
@@ -92,6 +128,7 @@ export class AuthService {
   // Sign out
   signOut() {
     return this.afAuth.signOut().then(() => {
+      // TODO: log de salida
       localStorage.removeItem('usuario');
       this.router.navigate(['home']);
     });
