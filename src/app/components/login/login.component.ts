@@ -12,8 +12,16 @@ import { Usuario } from '../../shared/usuario';
 })
 export class LoginComponent implements OnInit {
 
+  fillEmail: string = '';
+  fillClave: string = '';
+
   constructor( public authenticationService: AuthenticationService ) { }
 
   ngOnInit() { }
+
+  completarCampos() {
+    this.fillEmail = "test1@lab4.com";
+    this.fillClave = "password";
+  }
 
 }

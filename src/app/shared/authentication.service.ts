@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from './usuario';
+import { LogService } from './log.service';
 
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import * as auth from 'firebase/auth';
@@ -12,40 +13,35 @@ import { Router } from '@angular/router';
 })
 
 export class AuthenticationService {
-  datosUsuario: any; // Guarda datos del usuario logueado
 
   constructor(
-    public afs: AngularFirestore, // Injecta Firestore service
-    public afAuth: AngularFireAuth, // Injecta Firebase auth service
-    public router: Router
+    public afs: AngularFirestore, // Inyecta Firestore service
+    public afAuth: AngularFireAuth, // Inyecta Firebase auth service
+    public router: Router,
+    public logService: LogService
     ) {
-    /* Guarda los datos del usuario en localstorage en log in
-    y los setea en null en log out. */
-    this.afAuth.authState.subscribe((usuario) => {
-      if (usuario) {
-        this.datosUsuario = usuario;
-        localStorage.setItem('usuario', JSON.stringify(this.datosUsuario));
-        JSON.parse(localStorage.getItem('usuario')!);
-      } else {
-        localStorage.setItem('usuario', 'null');
-        JSON.parse(localStorage.getItem('usuario')!);
-      }
-    });
-  }
+      // Guarda los datos del usuario en localstorage si está logueado
+      this.afAuth.authState.subscribe((usuario) => {
+        if (usuario) {
+          localStorage.setItem('usuario', JSON.stringify(usuario));
+          JSON.parse(localStorage.getItem('usuario')!);
+        } else {
+          localStorage.setItem('usuario', 'null');
+          JSON.parse(localStorage.getItem('usuario')!);
+        }
+      });
+    }
 
   // Log in con email/clave
   signIn(email: string, clave: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, clave)
       .then((resultado) => {
-        // TODO: log de ingreso
-
-        // Login del usuario y redirección
-        this.afAuth.authState.subscribe((usuario) => {
-          if (usuario) {
-            this.router.navigate(['home']);
-          }
-        });
+        // Log de ingreso
+        this.logService.signIn(email);
+        
+        // Redirección
+        this.router.navigate(['home']);
       })
       .catch((error) => {
         let mensaje: string;
@@ -57,7 +53,8 @@ export class AuthenticationService {
             mensaje = "Usuario deshabilitado";
             break;
           default:
-            mensaje = "Usuario o clave incorrectos";
+            // mensaje = "Usuario o clave incorrectos";
+            mensaje = error.code;
         } 
         // TODO: nada de alerts!
         window.alert(mensaje);
@@ -69,17 +66,14 @@ export class AuthenticationService {
     return this.afAuth
       .createUserWithEmailAndPassword(email, clave)
       .then((resultado) => {
-        this.setDatosUsuario(resultado.user, nombre);
-        
-        // TODO: log de ingreso
+        resultado.user.updateProfile({ displayName: nombre });
+        // .then(...)
+        // .catch(...)
 
-        // Login del usuario y redirección
-        this.afAuth.authState.subscribe((usuario) => {
-          if (usuario) {
-            this.router.navigate(['home']);
-          }
-        });
-
+        // Log de registro
+        this.logService.signUp(email);
+        // Redirección
+        this.router.navigate(['home']);
       })
       .catch((error) => {
         let mensaje: string;
@@ -103,34 +97,29 @@ export class AuthenticationService {
 
   // Devuelve true si el usuario está logueado
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null ? true : false;
+    const usuario = JSON.parse(localStorage.getItem('usuario')!);
+    return usuario !== null ? true : false;
   }
 
-  /* Setting up user data when sign in with username/password, 
-  sign up with username/password and sign in with social auth  
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-
-  setDatosUsuario(user: any, nombre: string) {
-    const refUsuario: AngularFirestoreDocument<any> = this.afs.doc(
-      `usuarios/${user.uid}`
-    );
-    const datosUsuario: Usuario = {
-      uid: user.uid,
-      email: user.email,
-      nombre: nombre
-    };
-    return refUsuario.set(datosUsuario, {
-      merge: true,
-    });
+  // Devuelve true si el usuario está logueado
+  get getUsuarioActual(): string {
+    const usuario = JSON.parse(localStorage.getItem('usuario')!);
+    return usuario.email;
   }
 
-  // Sign out
   signOut() {
-    return this.afAuth.signOut().then(() => {
-      // TODO: log de salida
-      localStorage.removeItem('usuario');
-      this.router.navigate(['home']);
+    this.afAuth.authState.subscribe((usuario) => {
+      if (usuario) {
+        // User is signed in
+        // Log de salida
+        this.logService.signOut(usuario.email);
+
+        localStorage.removeItem('usuario');
+
+        this.afAuth.signOut().then(() => {
+          this.router.navigate(['home']);
+        });
+      }
     });
   }
 

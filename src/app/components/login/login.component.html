@@ -6,9 +6,9 @@
     </span>
   </p>
   
-  <input name="nombre" #nombre type="email" class="dark-username" autofocus="true" required="true" placeholder="Username" />
+  <input name="nombre" #nombre type="email" [value]="fillEmail" class="dark-username" autofocus="true" required="true" placeholder="Username" />
 
-  <input name="clave" #clave type="password" class="dark-password" required="true" placeholder="Password" />
+  <input name="clave" #clave type="password" [value]="fillClave" class="dark-password" required="true" placeholder="Password" />
 
   <input type="button" name="Login" value="Ingresar" class="dark-submit" (click)="authenticationService.signIn(nombre.value, clave.value)" />
 
@@ -16,6 +16,8 @@
     <h3>¿Primera vez por aquí?</h3>
     <input type="button" routerLink="/registro" value="Registrarse" class="dark-submit" />
   </div>
+
+  <input type="button" name="fill" value="Completar Campos" class="dark-submit" (click)="completarCampos()" />
 
 </form>
 <!-- <a href="#" class="dark-forgot-pass">forgot password?</a> -->

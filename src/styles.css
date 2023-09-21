@@ -35,6 +35,11 @@ h3 {
   transition: 0.2s all;
 }
 
+small.dark {
+  padding: 5px 5px;
+  font-size: 10px;
+}
+
 .dark a:hover {
   color: #8400ff;
 }
