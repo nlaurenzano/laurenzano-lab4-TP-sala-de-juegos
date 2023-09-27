@@ -10,7 +10,7 @@
   
   <input name="email" #email type="email" class="dark-username" autofocus="true" required="true" placeholder="Email" />
 
-  <input name="clave" #clave type="password" class="dark-password" required="true" placeholder="Password" />
+  <input name="clave" #clave type="password" class="dark-password" required="true" placeholder="Clave" />
 
   <input type="button" name="Registrarse" value="Registrarse" class="dark-submit" (click)="authenticationService.signUp(email.value, nombre.value, clave.value)" />
 
