@@ -29,6 +29,7 @@ Sprint 2: Entrega en Clase 04 - 21/9
     - Debe tener botones de acceso rápido.
       Estos botones tienen que completar los campos de email y contraseña con un usuario válido que al presionar el botón ingresar acceda a la home:
       Algunos usuarios existentes:
+      -	test1@lab4.com / password
       - admin@admin.com / password
 
 - Componente Registro:

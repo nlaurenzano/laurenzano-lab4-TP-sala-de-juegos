@@ -8,6 +8,10 @@ import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
+import Toastify from 'toastify-js';
+// import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+// import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -53,11 +57,23 @@ export class AuthenticationService {
             mensaje = "Usuario deshabilitado";
             break;
           default:
-            // mensaje = "Usuario o clave incorrectos";
-            mensaje = error.code;
-        } 
-        // TODO: nada de alerts!
-        window.alert(mensaje);
+            mensaje = "Usuario o clave incorrectos";
+            // mensaje = error.code;
+        }
+        // Swal.fire({
+        //   title: 'Error',
+        //   text: mensaje,
+        //   icon: 'error',
+        //   confirmButtonText: 'Aceptar'
+        // });
+        Toastify({
+          text: mensaje,
+          duration: 3000,
+          position: 'center',
+          close: true,
+          stopOnFocus: true,
+          style: { background: "linear-gradient(to right, #f00, #f11)" }
+        }).showToast();
       });
   }
 
@@ -90,8 +106,20 @@ export class AuthenticationService {
           default:
             mensaje = "Ocurrió un error inesperado";
         } 
-        // TODO: nada de alerts!
-        window.alert(mensaje);
+        // Swal.fire({
+        //   title: 'Error',
+        //   text: mensaje,
+        //   icon: 'error',
+        //   confirmButtonText: 'Aceptar'
+        // });
+        Toastify({
+          text: mensaje,
+          duration: 3000,
+          position: 'center',
+          close: true,
+          stopOnFocus: true,
+          style: { background: "linear-gradient(to right, #f00, #f11)" }
+        }).showToast();
       });
   }
 
