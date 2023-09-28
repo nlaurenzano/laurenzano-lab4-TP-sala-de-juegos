@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "mydeploy": "ng build && firebase deploy --only hosting"
+    "mydeploy": "ng build && firebase deploy --only hosting:laurenzano-lab4-TP-sala-de-juegos"
   },
   "private": true,
   "dependencies": {
