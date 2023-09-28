@@ -1,4 +1,3 @@
-
 <form class="dark-form">
   <p class="dark-text">
     <span class="fa-stack fa-lg">
@@ -13,6 +12,7 @@
 
   <input type="button" name="Login" value="Ingresar" class="dark-submit" (click)="authenticationService.signIn(nombre.value, clave.value)" />
 
+
   <div class="dark">
     <h3>¿Primera vez por aquí?</h3>
     <input type="button" routerLink="/registro" value="Registrarse" class="dark-submit" />
@@ -22,3 +22,6 @@
 
 </form>
 <!-- <a href="#" class="dark-forgot-pass">forgot password?</a> -->
+<!-- <button [swal]="['Oops!', 'This is not implemented yet :/', 'warning']" >
+  Do it!
+</button> -->

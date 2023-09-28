@@ -16,6 +16,8 @@ import { environment } from '../environments/environment';
 import { AuthenticationService } from "./shared/authentication.service";
 import { LogService } from "./shared/log.service";
 
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import { LogService } from "./shared/log.service";
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [AuthenticationService, LogService],
   bootstrap: [AppComponent]
