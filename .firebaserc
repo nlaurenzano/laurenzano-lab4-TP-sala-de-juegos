@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "sala-de-juegos-1109c"
+  },
+  "targets": {
+    "sala-de-juegos-1109c": {
+      "hosting": {
+        "laurenzano-lab4-TP-sala-de-juegos": [
+          "laurenzano-sala-de-juegos-lab4"
+        ]
+      }
+    }
   }
 }

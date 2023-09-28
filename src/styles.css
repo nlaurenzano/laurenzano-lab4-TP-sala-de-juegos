@@ -4,6 +4,10 @@
 
 }
 
+h3 {
+  text-align: center;
+}
+
 .dark {
   font-family: 'Montserrat', sans-serif;
   color: #ff005a;
@@ -29,6 +33,11 @@
   font-weight: 700;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
+}
+
+small.dark {
+  padding: 5px 5px;
+  font-size: 10px;
 }
 
 .dark a:hover {

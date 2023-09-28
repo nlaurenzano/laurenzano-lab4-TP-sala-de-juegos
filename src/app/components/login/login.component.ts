@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// import { Router } from '@angular/router';
+import { AuthenticationService } from "../../shared/authentication.service";
 
+// import { Auth, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Auth, getAuth, signInWithEmailAndPassword } from "@angular/fire/auth";
 import { Usuario } from '../../shared/usuario';
 
 @Component({
@@ -10,30 +12,16 @@ import { Usuario } from '../../shared/usuario';
 })
 export class LoginComponent implements OnInit {
 
-  usuario = new Usuario();
+  fillEmail: string = '';
+  fillClave: string = '';
 
+  constructor( public authenticationService: AuthenticationService ) { }
 
-  ngOnInit() {
-    localStorage.setItem('admin','123');
-    localStorage.setItem('u01','123');
-    localStorage.setItem('u02','123');
+  ngOnInit() { }
 
-    // console.log(localStorage.getItem('admin'));
+  completarCampos() {
+    this.fillEmail = "test1@lab4.com";
+    this.fillClave = "password";
   }
-
-  validarUsuario() {
-    let nombre: string = this.usuario.nombre;
-
-    if ( this.usuario.clave == localStorage.getItem(nombre) ) {
-      console.log('Bienvenido ' + nombre);
-      this.usuario.nombre = '';
-      this.usuario.clave = '';
-        // this._router.navigate(['/home'])
-    } else {
-      console.log('Credenciales inválidas.');
-        // this._router.navigate(['/not-found'])
-    }
-  }
-
 
 }

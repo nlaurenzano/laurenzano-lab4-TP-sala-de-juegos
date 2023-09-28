@@ -1,19 +1,24 @@
-<app-navbar></app-navbar>
 
-<form class="login-form">
-  <p class="login-text">
+<form class="dark-form">
+  <p class="dark-text">
     <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="fa fa-lock fa-stack-1x"></i>
     </span>
   </p>
   
-  <input name="nombre" type="email" class="login-username" autofocus="true" required="true" placeholder="Username" [(ngModel)]="usuario.nombre" />
-  <input name="clave" type="password" class="login-password" required="true" placeholder="Password" [(ngModel)]="usuario.clave" />
+  <input name="nombre" #nombre type="email" [value]="fillEmail" class="dark-username" autofocus="true" required="true" placeholder="Username" />
 
-  <!-- <input type="submit" name="Login" value="Login" class="login-submit" /> -->
-  <input type="button" name="Login" value="Login" class="login-submit" (click)="validarUsuario()" />
+  <input name="clave" #clave type="password" [value]="fillClave" class="dark-password" required="true" placeholder="Clave" />
+
+  <input type="button" name="Login" value="Ingresar" class="dark-submit" (click)="authenticationService.signIn(nombre.value, clave.value)" />
+
+  <div class="dark">
+    <h3>¿Primera vez por aquí?</h3>
+    <input type="button" routerLink="/registro" value="Registrarse" class="dark-submit" />
+  </div>
+
+  <input type="button" name="fill" value="Completar Campos" class="dark-submit" (click)="completarCampos()" />
+
 </form>
-<!-- <a href="#" class="login-forgot-pass">forgot password?</a> -->
-<!-- <div class="underlay-photo"></div>
-<div class="underlay-black"></div>  -->
+<!-- <a href="#" class="dark-forgot-pass">forgot password?</a> -->

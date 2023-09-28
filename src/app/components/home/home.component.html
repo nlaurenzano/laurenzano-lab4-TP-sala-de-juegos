@@ -1,5 +1,20 @@
-<app-navbar></app-navbar>
-
 <div class="dark">
-	<p>home works!</p>
+  <h2>Sala de Juegos</h2>
+
+    <div *ngIf="authenticationService.isLoggedIn; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      
+
+
+    </ng-template>
+    <ng-template #elseBlock>
+      
+
+
+    </ng-template>
+
+
+
 </div>
+
+

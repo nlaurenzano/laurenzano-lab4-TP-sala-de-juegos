@@ -1,0 +1,23 @@
+<form class="dark-form">
+  <p class="dark-text">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-lock fa-stack-1x"></i>
+    </span>
+  </p>
+  
+  <input name="nombre" #nombre type="text" class="dark-username" autofocus="true" required="true" placeholder="Nombre" />
+  
+  <input name="email" #email type="email" class="dark-username" autofocus="true" required="true" placeholder="Email" />
+
+  <input name="clave" #clave type="password" class="dark-password" required="true" placeholder="Clave" />
+
+  <input type="button" name="Registrarse" value="Registrarse" class="dark-submit" (click)="authenticationService.signUp(email.value, nombre.value, clave.value)" />
+
+  <div class="dark">
+    <h3>¿Ya te has registrado?</h3>
+    <input type="button" routerLink="/login" value="Ingresar" class="dark-submit" />
+  </div>
+
+</form>
+<!-- <a href="#" class="dark-forgot-pass">forgot password?</a> -->
