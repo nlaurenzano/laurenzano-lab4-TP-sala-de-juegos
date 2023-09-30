@@ -3,6 +3,7 @@
   <div class="header-right">
     <!-- <a class="active" href="/home">Home</a> -->
     <a routerLink="/home">Inicio</a>
+    <a routerLink="/whoami">Quién soy</a>
 
     <div *ngIf="authenticationService.isLoggedIn; then thenBlock else elseBlock"></div>
     <ng-template #thenBlock>
@@ -12,12 +13,9 @@
       <a routerLink="/login">Ingresar</a>
     </ng-template>
 
-    <a routerLink="/whoami">Quién soy</a>
-
     <div *ngIf="authenticationService.isLoggedIn">
       <small class="dark header-right">{{authenticationService.getUsuarioActual}}</small>
     </div>
-
 
   </div>
 </nav>

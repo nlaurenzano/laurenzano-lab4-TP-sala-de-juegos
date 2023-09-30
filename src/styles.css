@@ -8,6 +8,10 @@ h3 {
   text-align: center;
 }
 
+.dark-toast {
+  font-family: 'Open Sans';
+}
+
 .dark {
   font-family: 'Montserrat', sans-serif;
   color: #ff005a;

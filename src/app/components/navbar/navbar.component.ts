@@ -8,6 +8,11 @@ import { AuthenticationService } from "../../shared/authentication.service";
 })
 export class NavbarComponent {
 
+
   constructor( public authenticationService: AuthenticationService ) { }
+
+  ngOnInit() {}
+
+  ngOnDestroy() {}
 
 }

@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from "../../shared/authentication.service";
 
-// import { Auth, getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Auth, getAuth, signInWithEmailAndPassword } from "@angular/fire/auth";
-import { Usuario } from '../../shared/usuario';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,10 +13,12 @@ export class LoginComponent implements OnInit {
 
   constructor( public authenticationService: AuthenticationService ) { }
 
-  ngOnInit() { }
+  ngOnInit(){}
+
+  ngOnDestroy() { }
 
   completarCampos() {
-    this.fillEmail = "test1@lab4.com";
+    this.fillEmail = "test5@lab4.com";
     this.fillClave = "password";
   }
 

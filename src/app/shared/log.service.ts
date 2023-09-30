@@ -7,7 +7,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 export class LogService {
 
   constructor(
-    public afs: AngularFirestore, // Injecta Firestore service
+      public afs: AngularFirestore, // Injecta Firestore service
     ) { }
 
   log(actividad: string, nombre: string) {
