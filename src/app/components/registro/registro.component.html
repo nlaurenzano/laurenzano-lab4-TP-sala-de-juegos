@@ -1,23 +1,30 @@
-<form class="dark-form">
-  <p class="dark-text">
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-lock fa-stack-1x"></i>
-    </span>
-  </p>
-  
-  <input name="nombre" #nombre type="text" class="dark-username" autofocus="true" required="true" placeholder="Nombre" />
-  
-  <input name="email" #email type="email" class="dark-username" autofocus="true" required="true" placeholder="Email" />
+<p class="dark-text text-light">
+  <span class="fa-stack fa-lg">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-lock fa-stack-1x"></i>
+  </span>
+</p>
 
-  <input name="clave" #clave type="password" class="dark-password" required="true" placeholder="Clave" />
+<div class="card dark-form p-1 mx-auto">
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <input name="nombre" #nombre type="text" class="form-control mb-3" autofocus="true" required="true" placeholder="Nombre" />
 
-  <input type="button" name="Registrarse" value="Registrarse" class="dark-submit" (click)="authenticationService.signUp(email.value, nombre.value, clave.value)" />
+        <input name="email" #email type="email" class="form-control mb-3" autofocus="true" required="true" placeholder="Email" />
+        <!-- aria-describedby="emailHelp" -->
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email</small> -->
 
-  <div class="dark">
-    <h3>¿Ya te has registrado?</h3>
-    <input type="button" routerLink="/login" value="Ingresar" class="dark-submit" />
+        <input name="clave" #clave type="password" class="form-control mb-3" required="true" placeholder="Clave" />
+      </div>
+
+      <div class="mx-auto text-center">
+        <input type="button" name="Registrarse" value="Registrarse" class="btn btn-outline-primary m-1" (click)="authenticationService.signUp(email.value, nombre.value, clave.value)" />
+
+        <div class="lead mt-3 mb-1 text-mono text-info">¿Ya te has registrado?</div>
+        <input type="button" routerLink="/login" value="Ingresar" class="btn btn-outline-primary" />
+      </div>
+
+    </form>
   </div>
-
-</form>
-<!-- <a href="#" class="dark-forgot-pass">forgot password?</a> -->
+</div>

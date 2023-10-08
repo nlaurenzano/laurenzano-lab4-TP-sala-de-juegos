@@ -1,27 +1,29 @@
-<form class="dark-form">
-  <p class="dark-text">
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-lock fa-stack-1x"></i>
-    </span>
-  </p>
-  
-  <input name="nombre" #nombre type="email" [value]="fillEmail" class="dark-username" autofocus="true" required="true" placeholder="Username" />
+<p class="dark-text text-light">
+  <span class="fa-stack fa-lg">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-lock fa-stack-1x"></i>
+  </span>
+</p>
 
-  <input name="clave" #clave type="password" [value]="fillClave" class="dark-password" required="true" placeholder="Clave" />
+<div class="card dark-form p-1 mx-auto">
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <input name="nombre" #nombre type="email" [value]="fillEmail" class="form-control mb-3" autofocus="true" required="true" placeholder="Email" />
+        <!-- aria-describedby="emailHelp" -->
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email</small> -->
 
-  <input type="button" name="Login" value="Ingresar" class="dark-submit" (click)="authenticationService.signIn(nombre.value, clave.value)" />
+        <input name="clave" #clave type="password" [value]="fillClave" class="form-control mb-3" required="true" placeholder="Clave" />
+      </div>
 
+      <div class="mx-auto text-center">
+        <input type="button" name="Login" value="Ingresar" class="btn btn-outline-primary m-1" (click)="authenticationService.signIn(nombre.value, clave.value)" />
+        <input type="button" name="fill" value="Completar Campos" class="btn btn-outline-primary m-1" (click)="completarCampos()" />
 
-  <div class="dark">
-    <h3>¿Primera vez por aquí?</h3>
-    <input type="button" routerLink="/registro" value="Registrarse" class="dark-submit" />
+        <div class="lead mt-3 mb-1 text-mono text-info">¿Primera vez por aquí?</div>
+        <input type="button" routerLink="/registro" value="Registrarse" class="btn btn-outline-primary" />
+      </div>
+
+    </form>
   </div>
-
-  <input type="button" name="fill" value="Completar Campos" class="dark-submit" (click)="completarCampos()" />
-
-</form>
-<!-- <a href="#" class="dark-forgot-pass">forgot password?</a> -->
-<!-- <button [swal]="['Oops!', 'This is not implemented yet :/', 'warning']" >
-  Do it!
-</button> -->
+</div>
