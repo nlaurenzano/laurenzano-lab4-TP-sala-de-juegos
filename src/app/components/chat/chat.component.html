@@ -1,0 +1,83 @@
+
+<div [className]="isActive ? 'hide' : 'show'">
+  <div class="chat-card mb-2 mr-4">
+    <p class="dark-text text-primary" (click)="toggleActive()">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-comment fa-stack-1x"></i>
+        <!-- <i class="fa fa-comment-dots fa-stack-1x"></i> -->
+      </span>
+    </p>
+  </div>
+</div>
+  
+<div [className]="isActive ? 'show' : 'hide'">
+  <div class="card chat-card mb-2">
+
+    <div class="card-header" (click)="toggleActive()">
+      <h4 class="card-title"><strong>Chat</strong></h4>
+      <button type="button" class="close text-white" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+      <!-- <a class="btn btn-xs btn-secondary" href="#" data-abc="true">Let's Chat App</a> -->
+    </div>
+
+
+    <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:400px !important;">
+
+      <!-- <div *ngFor="let user of users; index as i; first as isFirst"> -->
+        <!-- {{i}}/{{users.length}}. {{user}} <span *ngIf="isFirst">default</span> -->
+
+
+      <!-- </div> -->
+
+
+      <div class="media media-chat">
+        <!-- <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="..."> -->
+        <div class="media-body">
+          <p class="bg-light text-dark">Hi</p>
+          <p class="bg-light text-dark">How are you ...???</p>
+          <p class="bg-light text-dark">What are you doing tomorrow?<br> Can we come up a bar?</p>
+          <p class="meta"><time datetime="2018">23:58</time> - usuario 1</p>
+        </div>
+      </div>
+
+      <!-- <div class="media media-meta-day">Today</div> -->
+
+      <div class="media media-chat media-chat-reverse">
+        <div class="media-body">
+          <p class="bg-success text-white">Hiii, I'm good.</p>
+          <p class="bg-success text-white">How are you doing?</p>
+          <p class="bg-success text-white">Long time no see! Tomorrow office. will be free on sunday.</p>
+          <p class="meta"><time datetime="2018">00:06</time></p>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+        <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+      </div>
+      <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+      </div>
+
+    </div>
+
+    <div class="card-footer">
+    <!-- <div class="publisher bt-1 border-light"> -->
+      <!-- <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="..."> -->
+
+      <div class="input-group mb-3">
+        <input type="text" name="mensaje" #mensaje class="form-control" [(ngModel)]="textoMensaje" aria-label="Mensaje" (keydown)="validarTecla($event)">
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="button" (click)="enviarMensaje()">Enviar</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

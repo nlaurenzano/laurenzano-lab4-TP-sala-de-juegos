@@ -42,7 +42,7 @@ export class AuthenticationService implements OnInit {
         .then((resultado) => {
           // Log de ingreso
           this.logService.signIn(email);
-          console.log('nombre: '+resultado.user.displayName);
+          // console.log('nombre: '+resultado.user.displayName);
           
           // Redirección
           this.router.navigate(['home']);
@@ -105,7 +105,7 @@ export class AuthenticationService implements OnInit {
     return this.usuario !== null ? true : false;
   }
 
-  // Devuelve true si el usuario está logueado
+  // Devuelve el nombre del usuario logueado o null
   get getUsuarioActual(): string {
     if ( this.usuario ) {
       return this.usuario.displayName !== null ? this.usuario.displayName : this.usuario.email;
@@ -131,10 +131,10 @@ export class AuthenticationService implements OnInit {
       text: mensaje,
       duration: 3000,
       position: 'center',
-      className: 'dark-toast',
+      className: 'text-mono',
       close: true,
       stopOnFocus: true,
-      style: { background: "linear-gradient(to right, #f00, #f11)" }
+      style: { color: "#701a28", background: "linear-gradient(to right, #ff8a9d, #ff8a9d)" }
     }).showToast();
   }
 

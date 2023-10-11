@@ -6,14 +6,14 @@
 
     <div *ngIf="authenticationService.isLoggedIn; then thenBlock else elseBlock"></div>
     <ng-template #thenBlock>
-      <a (click)="authenticationService.signOut()">Salir</a>
+      <a routerLink="" (click)="authenticationService.signOut()">Salir</a>
     </ng-template>
     <ng-template #elseBlock>
       <a routerLink="/login">Ingresar</a>
     </ng-template>
 
     <div *ngIf="authenticationService.isLoggedIn">
-      <div class="text-darkgrey text-mono my-2 header-right">{{authenticationService.getUsuarioActual}}</div>
+      <div class="text-info text-mono my-2 header-right">{{authenticationService.getUsuarioActual}}</div>
     </div>
 
 
