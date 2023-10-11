@@ -1,11 +1,15 @@
 @import url(../../shared/contenido.css);
 
 .show {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0.1s, opacity 0.1s linear;
 }
 
 .hide {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 0.33s, opacity 0.33s linear;
 }
 
 .chat-card {
