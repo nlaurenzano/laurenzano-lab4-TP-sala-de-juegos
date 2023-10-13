@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { ChatService } from '../../shared/chat.service';
 import { AuthenticationService } from '../../shared/authentication.service';
 
@@ -9,7 +9,9 @@ import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
+
+  @ViewChild('chatcontent') private chatContentContainer: ElementRef;
 
   nombre: string;
   textoMensaje: string = '';
@@ -22,19 +24,26 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     this.nombre = this.authenticationService.getUsuarioActual;
+    this.chatService.iniciarMensajes();
+  }
+
+  ngOnDestroy() {
+    this.chatService.cerrarMensajes();
   }
 
   enviarMensaje() {
     if (this.textoMensaje != '') {
       this.chatService.enviarMensaje(this.nombre, this.textoMensaje);
       this.textoMensaje = '';
+
+      setTimeout( () => {this.scrollToBottom();}, 300);
     }
   }
 
-  validarTecla(event: any) {
-   if (event.key === "Enter") {
-      this.enviarMensaje();
-    }
+  scrollToBottom(): void {
+    try {
+        this.chatContentContainer.nativeElement.scrollTop = this.chatContentContainer.nativeElement.scrollHeight;
+    } catch(err) { }                 
   }
 
   // Devuelve true el chat está abierto
@@ -45,6 +54,5 @@ export class ChatComponent implements OnInit {
   toggleActive() {
     this.activo = !this.activo;
   }
-
 
 }

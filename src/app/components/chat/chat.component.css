@@ -115,12 +115,6 @@ h4.card-title {
     margin-bottom: 0;
 }
 
-.media {
-    padding: 16px 12px;
-    -webkit-transition: background-color .2s linear;
-    transition: background-color .2s linear;
-}
-
 .media .avatar {
     flex-shrink: 0;
 }
@@ -156,6 +150,8 @@ h4.card-title {
     background-color: transparent !important;
     padding: 0;
     opacity: .8;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
 }
 
 .media-meta-day {
@@ -167,12 +163,6 @@ h4.card-title {
     color: #8b95a5;
     opacity: .8;
     font-weight: 400;
-}
-
-.media {
-    padding: 16px 12px;
-    -webkit-transition: background-color .2s linear;
-    transition: background-color .2s linear;
 }
 
 .media-meta-day::before {
@@ -211,7 +201,7 @@ h4.card-title {
 }
 
 .media {
-    padding: 16px 12px;
+/*    padding: 16px 12px;*/
     -webkit-transition: background-color .2s linear;
     transition: background-color .2s linear;
 }
@@ -225,7 +215,7 @@ h4.card-title {
 
 .media-chat .media-body p {
     position: relative;
-    padding: 6px 8px;
+    padding: 4px 6px;
     margin: 4px 0;
 /*    background-color: #f5f6f7;*/
     border-radius: 3px;
