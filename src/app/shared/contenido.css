@@ -9,6 +9,17 @@
   max-width: 350px;
   padding: .5rem;
 }
+
+.juego-card {
+/*  background: #222;*/
+/*  box-shadow: 0 0 1rem rgba(0,0,0,0.3);*/
+  min-height: 10rem;
+  margin: auto;
+  max-width: 80%;
+  min-width: 650px;
+  padding: .5rem;
+}
+
 .dark-text {
 /*  background: hsl(40,30,60);*/
 /*  border-bottom: .5rem solid white;*/

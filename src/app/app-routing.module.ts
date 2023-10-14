@@ -10,6 +10,7 @@ const routes: Routes = [
     { path: 'login',  loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule) },
     { path:"whoami", loadChildren: () => import('./components/whoami/whoami.module').then(m => m.WhoamiModule) },
     { path: 'registro', loadChildren: () => import('./components/registro/registro.module').then(m => m.RegistroModule) },
+    { path: 'juego-ahorcado', loadChildren: () => import('./components/juego-ahorcado/juego-ahorcado.module').then(m => m.JuegoAhorcadoModule) },
     { path:"**", component: NotFoundComponent }
   ];
 
