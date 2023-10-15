@@ -5742,6 +5742,9 @@ button.bg-dark:focus {
 .bg-white {
   background-color: #fff !important; }
 
+.bg-black {
+  background-color: #111 !important; }
+  
 .bg-transparent {
   background-color: transparent !important; }
 

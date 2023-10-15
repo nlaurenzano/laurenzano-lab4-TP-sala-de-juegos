@@ -1,6 +1,5 @@
 <nav class="header">
-
-  <a routerLink="/home" class="logo"><img src="/assets/logo-flecha.png"></a>
+  <a routerLink="/home" class="logo"><img src="/assets/logo-graffiti-monkey.png"></a>
 
   <div class="header-right">
     <a routerLink="/home">Inicio</a>
@@ -8,6 +7,7 @@
 
     <div *ngIf="authenticationService.isLoggedIn; then thenBlock else elseBlock"></div>
     <ng-template #thenBlock>
+      <a routerLink="/menu-juegos">Juegos</a>
       <a routerLink="/juego-ahorcado">Ahorcado</a>
       <a routerLink="" (click)="authenticationService.signOut()">Salir</a>
     </ng-template>
@@ -16,9 +16,8 @@
     </ng-template>
 
     <div *ngIf="authenticationService.isLoggedIn">
-      <div class="text-info text-mono my-2 header-right">{{authenticationService.getUsuarioActual}}</div>
+      <div class="text-info text-mono my-2 user-info">{{authenticationService.getUsuarioActual}}</div>
     </div>
-
 
   </div>
 </nav>

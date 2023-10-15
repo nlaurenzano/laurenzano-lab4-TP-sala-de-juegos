@@ -22,6 +22,8 @@ import { LogService } from "./shared/log.service";
 import { ChatService } from "./shared/chat.service";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
+// import { MenuJuegosComponent } from './components/menu-juegos/menu-juegos.component';
 // import { JuegoMayormenorComponent } from './components/juego-mayormenor/juego-mayormenor.component';
 
 @NgModule({

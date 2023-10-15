@@ -11,6 +11,7 @@ const routes: Routes = [
     { path:"whoami", loadChildren: () => import('./components/whoami/whoami.module').then(m => m.WhoamiModule) },
     { path: 'registro', loadChildren: () => import('./components/registro/registro.module').then(m => m.RegistroModule) },
     { path: 'juego-ahorcado', loadChildren: () => import('./components/juego-ahorcado/juego-ahorcado.module').then(m => m.JuegoAhorcadoModule) },
+    { path: 'menu-juegos', loadChildren: () => import('./components/menu-juegos/menu-juegos.module').then(m => m.MenuJuegosModule) },
     { path:"**", component: NotFoundComponent }
   ];
 
