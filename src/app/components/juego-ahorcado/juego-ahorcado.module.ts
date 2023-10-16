@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-// import { MatButtonModule } from '@angular/material/button';
-// import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { WordService } from './word.service';
 import { PlayGameService } from './playgame.service';
@@ -17,7 +14,6 @@ import * as hm from './hangman.helper';
 import { JuegoAhorcadoRoutingModule } from './juego-ahorcado-routing.module';
 import { JuegoAhorcadoComponent } from './juego-ahorcado.component';
 
-
 @NgModule({
   declarations: [
     JuegoAhorcadoComponent,
@@ -29,18 +25,13 @@ import { JuegoAhorcadoComponent } from './juego-ahorcado.component';
     hm.SpacedPipe
   ],
   imports: [
-    // FormsModule,
     CommonModule,
     JuegoAhorcadoRoutingModule,
-    HttpClientModule,
-    // MatButtonModule,
-    // FlexLayoutModule
+    HttpClientModule
   ],
   providers: [
     WordService,
     PlayGameService
-  ],
-  // bootstrap: [AppComponent]
+  ]
 })
 export class JuegoAhorcadoModule { }
-

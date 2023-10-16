@@ -8,7 +8,6 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
-
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,10 +20,6 @@ import { AuthenticationService } from "./shared/authentication.service";
 import { LogService } from "./shared/log.service";
 import { ChatService } from "./shared/chat.service";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-
-// import { MenuJuegosComponent } from './components/menu-juegos/menu-juegos.component';
-// import { JuegoMayormenorComponent } from './components/juego-mayormenor/juego-mayormenor.component';
 
 @NgModule({
   declarations: [

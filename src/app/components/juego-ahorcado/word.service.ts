@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-
 import * as R from 'ramda';
-
 
 @Injectable()
 export class WordService {
 
-  // https://404it.no/en/blog/javascript_get_base_url_or_root_url
-  // https://developer.mozilla.org/en-US/docs/Web/API/Location
   private static baseUrl() : string {
     const re = new RegExp(/^.*\//);
     // @ts-ignore
     return re.exec(window.location.href)[0];
-    }
+  }
+  private words: Array<string>;
 
-  private words : Array<string> ;
-  constructor(private http : HttpClient) {
-    http.get(WordService.baseUrl() + 'assets/juego-ahorcado-palabras.txt', { responseType: 'text' })
+  constructor( private http : HttpClient ) {
+    http.get( WordService.baseUrl() + 'assets/juego-ahorcado-palabras.txt', { responseType: 'text' } )
     .pipe(
       map(text => text.toUpperCase()),
       map(text => text.split('\n')),
@@ -28,12 +24,12 @@ export class WordService {
       words => this.words = words,
       err => console.error(`Error al cargar la lista de palabras - ${err}.`),
       () => console.log('¡Lista de palabras cargada!')
-    ) ;
+    );
   }
 
   // Generate a random integer in range 0 to max.
-  private static getRandomInt(max : number) : number {
-    return Math.floor(Math.random() * (max + 1));
+  private static getRandomInt( max : number ) : number {
+    return Math.floor( Math.random() * (max + 1) );
   }
 
   // A single random word for the 'words' array.
@@ -43,6 +39,6 @@ export class WordService {
       const pos : number = WordService.getRandomInt(this.words.length - 1);
       word = this.words[pos];
     }
-    return word ;
+    return word;
   }
 }

@@ -8,7 +8,6 @@
     <div *ngIf="authenticationService.isLoggedIn; then thenBlock else elseBlock"></div>
     <ng-template #thenBlock>
       <a routerLink="/menu-juegos">Juegos</a>
-      <a routerLink="/juego-ahorcado">Ahorcado</a>
       <a routerLink="" (click)="authenticationService.signOut()">Salir</a>
     </ng-template>
     <ng-template #elseBlock>

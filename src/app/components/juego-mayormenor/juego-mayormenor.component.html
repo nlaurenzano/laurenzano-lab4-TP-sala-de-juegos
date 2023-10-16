@@ -1,1 +1,24 @@
-<p>juego-mayormenor works!</p>
+<div class="example-card">
+<h1>{{message}}</h1>
+  <div>
+  <div>
+
+    <button md-button md-raised-button color="primary" (click)="juegoNuevo()">Juego Nuevo</button>
+
+    <button md-button md-raised-button color="accent" (click)="elegirMayor()">Mayor</button>
+    <button md-button md-raised-button color="primary" (click)="elegirMenor()">Menor</button>
+
+  </div>
+</div>
+  
+  <div>
+  <p [hidden]="!loader">Cargando...</p>
+  <ul [hidden]="loader">
+    <li  *ngFor="let card of dcards">
+      <img  [src]="card.blankCard">
+    </li>
+  </ul>
+ 
+  </div>
+ 
+</div>

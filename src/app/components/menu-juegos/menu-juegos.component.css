@@ -1,8 +1,13 @@
-
-
 .menu-item {
 	heigth: 300px;
 	width: 300px;
 	display: block;
 	margin: auto;
+}
+
+.menu-boton {
+	min-width: 280px;
+	font-size: 2rem;
+	font-weight: 300;
+	line-height: 1.2;
 }
