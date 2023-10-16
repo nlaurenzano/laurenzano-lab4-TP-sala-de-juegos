@@ -1,80 +1,68 @@
-import { Injectable } from '@angular/core';
-import { Usuario } from './usuario';
+import { Injectable, OnInit } from '@angular/core';
 import { LogService } from './log.service';
-
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import * as auth from 'firebase/auth';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
 import Toastify from 'toastify-js';
-// import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-// import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AuthenticationService {
+export class AuthenticationService implements OnInit {
+
+  usuario: any = null;
 
   constructor(
-    public afs: AngularFirestore, // Inyecta Firestore service
     public afAuth: AngularFireAuth, // Inyecta Firebase auth service
     public router: Router,
     public logService: LogService
     ) {
-      // Guarda los datos del usuario en localstorage si está logueado
-      this.afAuth.authState.subscribe((usuario) => {
-        if (usuario) {
-          localStorage.setItem('usuario', JSON.stringify(usuario));
-          JSON.parse(localStorage.getItem('usuario')!);
-        } else {
-          localStorage.setItem('usuario', 'null');
-          JSON.parse(localStorage.getItem('usuario')!);
-        }
-      });
-    }
+    afAuth.onAuthStateChanged((user) => {
+      if (user) {
+        this.usuario = user;
+      } else {
+        this.usuario = null;
+      }
+    });
+  }
+
+  ngOnInit() {
+    // this.authStatusListener();
+  }
+
+  ngOnDestroy() {
+  }
 
   // Log in con email/clave
   signIn(email: string, clave: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, clave)
-      .then((resultado) => {
-        // Log de ingreso
-        this.logService.signIn(email);
-        
-        // Redirección
-        this.router.navigate(['home']);
-      })
-      .catch((error) => {
-        let mensaje: string;
-        switch(error.code) {
-          case "auth/invalid-email":
-            mensaje = "Formato de correo inválido";
-            break;
-          case "auth/user-disabled":
-            mensaje = "Usuario deshabilitado";
-            break;
-          default:
-            mensaje = "Usuario o clave incorrectos";
-            // mensaje = error.code;
-        }
-        // Swal.fire({
-        //   title: 'Error',
-        //   text: mensaje,
-        //   icon: 'error',
-        //   confirmButtonText: 'Aceptar'
-        // });
-        Toastify({
-          text: mensaje,
-          duration: 3000,
-          position: 'center',
-          close: true,
-          stopOnFocus: true,
-          style: { background: "linear-gradient(to right, #f00, #f11)" }
-        }).showToast();
-      });
+        .then((resultado) => {
+          // Log de ingreso
+          this.logService.signIn(email);
+          // console.log('nombre: '+resultado.user.displayName);
+          
+          // Redirección
+          this.router.navigate(['home']);
+        })
+        .catch((error) => {
+          let mensaje: string;
+          switch(error.code) {
+            case "auth/invalid-email":
+              mensaje = "Formato de correo inválido";
+              break;
+            case "auth/user-disabled":
+              mensaje = "Usuario deshabilitado";
+              break;
+            default:
+              mensaje = "Usuario o clave incorrectos";
+              // mensaje = error.code;
+          }
+          this.mostrarError(mensaje);
+          
+        });
   }
 
   // Registro con email, nombre y clave
@@ -85,6 +73,8 @@ export class AuthenticationService {
         resultado.user.updateProfile({ displayName: nombre });
         // .then(...)
         // .catch(...)
+        
+        console.log('nombre: '+resultado.user.displayName);
 
         // Log de registro
         this.logService.signUp(email);
@@ -106,49 +96,46 @@ export class AuthenticationService {
           default:
             mensaje = "Ocurrió un error inesperado";
         } 
-        // Swal.fire({
-        //   title: 'Error',
-        //   text: mensaje,
-        //   icon: 'error',
-        //   confirmButtonText: 'Aceptar'
-        // });
-        Toastify({
-          text: mensaje,
-          duration: 3000,
-          position: 'center',
-          close: true,
-          stopOnFocus: true,
-          style: { background: "linear-gradient(to right, #f00, #f11)" }
-        }).showToast();
+        this.mostrarError(mensaje);
       });
   }
 
   // Devuelve true si el usuario está logueado
   get isLoggedIn(): boolean {
-    const usuario = JSON.parse(localStorage.getItem('usuario')!);
-    return usuario !== null ? true : false;
+    return this.usuario !== null ? true : false;
   }
 
-  // Devuelve true si el usuario está logueado
+  // Devuelve el nombre del usuario logueado o null
   get getUsuarioActual(): string {
-    const usuario = JSON.parse(localStorage.getItem('usuario')!);
-    return usuario.email;
+    if ( this.usuario ) {
+      return this.usuario.displayName !== null ? this.usuario.displayName : this.usuario.email;
+    } else {
+      return '';
+    }
   }
 
   signOut() {
-    this.afAuth.authState.subscribe((usuario) => {
-      if (usuario) {
-        // User is signed in
-        // Log de salida
-        this.logService.signOut(usuario.email);
+    if (this.usuario !== null) {
+      // Log de salida
+      this.logService.signOut(this.usuario.email);
 
-        localStorage.removeItem('usuario');
+      this.afAuth.signOut().then(() => {
+        // Redirección
+        this.router.navigate(['home']);
+      });
+    }
+  }
 
-        this.afAuth.signOut().then(() => {
-          this.router.navigate(['home']);
-        });
-      }
-    });
+  mostrarError(mensaje: String) {
+    Toastify({
+      text: mensaje,
+      duration: 3000,
+      position: 'center',
+      className: 'text-mono',
+      close: true,
+      stopOnFocus: true,
+      style: { color: "#701a28", background: "linear-gradient(to right, #ff8a9d, #ff8a9d)" }
+    }).showToast();
   }
 
 }

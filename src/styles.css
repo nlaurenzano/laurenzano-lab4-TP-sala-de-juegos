@@ -19,7 +19,7 @@ h3 {
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
 }
-
+/*
 .dark a {
   font-family: 'Montserrat', sans-serif;
   display: inline-block;
@@ -34,15 +34,16 @@ h3 {
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
 }
+.dark a:hover {
+  color: #8400ff;
+}
 
 small.dark {
   padding: 5px 5px;
   font-size: 10px;
 }
+*/
 
-.dark a:hover {
-  color: #8400ff;
-}
 
 
 
@@ -56,12 +57,11 @@ small.dark {
 }
 .underlay-photo {
   animation: hue-rotate 6s infinite;
-  background: url('/assets/monkey-graffitti.jpg') no-repeat center;
-/*  background: url('/assets/monkey-graffitti.jpg') no-repeat fixed center;*/
-  background-size: 500px;
+  background: url('/assets/graffitti-desktop-1024x576.jpg') no-repeat center;
+  background-size: cover;
   background-color: black;
   -webkit-filter: grayscale(30%);
-  opacity: 0.7;
+  opacity: 0.3;
   z-index: -1;
 }
 .underlay-black {

@@ -1,23 +1,22 @@
 <nav class="header">
-  <a routerLink="/home" class="logo"><img src="/assets/logo-flecha.png"></a>
+  <a routerLink="/home" class="logo"><img src="/assets/logo-graffiti-monkey.png"></a>
+
   <div class="header-right">
-    <!-- <a class="active" href="/home">Home</a> -->
     <a routerLink="/home">Inicio</a>
+    <a routerLink="/whoami">Quién soy</a>
 
     <div *ngIf="authenticationService.isLoggedIn; then thenBlock else elseBlock"></div>
     <ng-template #thenBlock>
-      <a (click)="authenticationService.signOut()">Salir</a>
+      <a routerLink="/menu-juegos">Juegos</a>
+      <a routerLink="" (click)="authenticationService.signOut()">Salir</a>
     </ng-template>
     <ng-template #elseBlock>
       <a routerLink="/login">Ingresar</a>
     </ng-template>
 
-    <a routerLink="/whoami">Quién soy</a>
-
     <div *ngIf="authenticationService.isLoggedIn">
-      <small class="dark header-right">{{authenticationService.getUsuarioActual}}</small>
+      <div class="text-info text-mono my-2 user-info">{{authenticationService.getUsuarioActual}}</div>
     </div>
-
 
   </div>
 </nav>
