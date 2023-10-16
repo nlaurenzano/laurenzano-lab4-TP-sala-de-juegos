@@ -1,24 +1,44 @@
-<div class="example-card">
-<h1>{{message}}</h1>
-  <div>
-  <div>
+<div class="container jumbotron">
+  <a routerLink="/menu-juegos" data-toggle="tooltip" data-placement="left" data-original-title="Cerrar" >
+    <img class="float-right" src="assets/logo-x.png" style="width:50px;">
+  </a>
 
-    <button md-button md-raised-button color="primary" (click)="juegoNuevo()">Juego Nuevo</button>
+  <div class="row">
+    <div class="col-sm jumbotron mesa-cartas bg-success">
+      <span *ngFor="let card of dcards">
+        <img class="w-50" [src]="card.blankCard">
+        
+        <!-- <img class="w-50" [src]="dcards[0].blankCard">
+        <img class="w-50" [src]="dcards[1].blankCard">
+         -->
+      </span>
 
-    <button md-button md-raised-button color="accent" (click)="elegirMayor()">Mayor</button>
-    <button md-button md-raised-button color="primary" (click)="elegirMenor()">Menor</button>
+    </div>
 
+    <div class="col-sm pb-4 text-center align-self-center">
+      <div>
+        <h5 class="lead mb-3 text-mono text-info text-center">Cartas restantes: {{cartasRestantes}}</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-sm text-center">
+      <div>
+        <h4 class="lead mb-3 text-mono text-warning">{{mensaje}}</h4>
+      </div>
+
+      <button class="btn btn-primary btn-shadow text-mono"
+              (click)="elegirMayor()">Mayor</button>
+      <button class="btn btn-primary btn-shadow text-mono"
+              (click)="elegirMenor()">Menor</button>
+
+      <br />
+      <button class="btn btn-primary btn-shadow text-mono mt-2"
+        (click)="juegoNuevo()">Nuevo Juego</button>
+      
+    </div>
   </div>
 </div>
-  
-  <div>
-  <p [hidden]="!loader">Cargando...</p>
-  <ul [hidden]="loader">
-    <li  *ngFor="let card of dcards">
-      <img  [src]="card.blankCard">
-    </li>
-  </ul>
- 
-  </div>
- 
-</div>
+
+<!-- <p [hidden]="!loader">Cargando...</p> -->
