@@ -19,14 +19,14 @@ export class JuegoMayormenorService {
 	}
 
 	drawCard( deckId ) : any {
-	  	return this.http.get<Cartas>( "http://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=1", { responseType: 'json' });
+	  	return this.http.get<Cartas>( "https://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=1", { responseType: 'json' });
 	}
 
 	drawCardsInit( deckId ) : any {
-	  	return this.http.get<Cartas>( "http://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=2", { responseType: 'json' });
+	  	return this.http.get<Cartas>( "https://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=2", { responseType: 'json' });
 	}
 
 	startGame() : any {
-		return this.http.get<Mazo>( "http://deckofcardsapi.com/api/deck/new/shuffle/", { responseType: 'json' });
+		return this.http.get<Mazo>( "https://deckofcardsapi.com/api/deck/new/shuffle/", { responseType: 'json' });
 	}
 }
