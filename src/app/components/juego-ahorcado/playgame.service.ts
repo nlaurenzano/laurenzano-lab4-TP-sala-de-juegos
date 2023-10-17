@@ -38,7 +38,7 @@ export class PlayGameService {
 
   // Important! -> This is an "instance" method for the class!
   playLetter = ( letter : string ) : void => {
-    console.log(`Play letter : ${letter}`) ;
+    // console.log(`Play letter : ${letter}`) ;
 
     if (this.statusInfo.active) {
       let guessList = this.statusInfo.guessWord.split('') ;
@@ -49,7 +49,7 @@ export class PlayGameService {
       const guessSet = this.statusInfo.guessSet ;
       this.statusInfo.guessSet = hm.applyGuess_(letter, guessSet, hangList) ;
       this.bodyPartsSubject.next(this.statusInfo.guessSet.size) ;
-      console.log(`Guess set   : ` + Array.from(this.statusInfo.guessSet)) ;
+      // console.log(`Guess set   : ` + Array.from(this.statusInfo.guessSet)) ;
 
       if (this.statusInfo.guessWord === this.statusInfo.hangWord) {
         this.statusInfo.wins++ ;
@@ -89,7 +89,7 @@ export class PlayGameService {
 
     this.statusInfo.caption   = '' ;
     this.statusInfo.hangWord  = this.wordService.randomWord() ;
-    console.log(`New hangWord is \'${this.statusInfo.hangWord}\'!`) ;
+    // console.log(`New hangWord is \'${this.statusInfo.hangWord}\'!`) ;
     this.statusInfo.guessWord = '_'.repeat(this.statusInfo.hangWord.length) ;
     this.statusInfo.guessSet.clear() ;
     this.bodyPartsSubject.next(this.statusInfo.guessSet.size) ;

@@ -20,6 +20,11 @@ export class JuegoPreguntadosComponent implements OnInit {
   private nrosUsados = [];
   private opcionesTemp = [];
 
+  private claseBoton = 'btn btn-primary btn-shadow text-mono mb-2';
+
+  private claseBotonDefault = 'btn btn-primary btn-shadow text-mono mb-2';
+  private claseBotonCorrecta = this.claseBotonDefault;
+
   public mensaje = "¡Bienvenido al juego Preguntados, edición Marvel!";
   public loader = false;
   public imagen: string;
@@ -119,11 +124,12 @@ export class JuegoPreguntadosComponent implements OnInit {
     // this.jugando = false;
     this.preguntasRestantes--;
 
-    if ( this.opciones[opcion] == this.nombreCorrecto ) {
+    if ( this.esCorrecta(opcion) ) {
       this.aciertos++;
       this.mensaje = "¡Correcto!";
     } else {
       this.mensaje = "¡Incorrecto!";
+      this.mostrarCorrecta();
     }
 
     if ( this.preguntasRestantes == 0 ) {
@@ -131,6 +137,24 @@ export class JuegoPreguntadosComponent implements OnInit {
       this.opciones = [];
     } else {
       setTimeout( () => {this.armarPregunta();}, 1000);
+    }
+  }
+
+  mostrarCorrecta() {
+    const claseResaltar = 'btn btn-warning btn-shadow text-mono mb-2';
+    this.claseBotonCorrecta = claseResaltar;
+    setTimeout( () => {this.claseBotonCorrecta = this.claseBotonDefault;}, 1000);
+  }
+
+  esCorrecta( i ) : boolean {
+    return this.opciones[i] == this.nombreCorrecto;
+  }
+
+  mostrarClaseBoton( i ) {
+    if ( this.esCorrecta(i) ) {
+      return this.claseBotonCorrecta;
+    } else {
+      return this.claseBotonDefault;
     }
   }
 

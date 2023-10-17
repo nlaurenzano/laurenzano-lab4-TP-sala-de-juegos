@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm jumbotron mesa-cartas bg-success">
     	<img src="{{imagen}}">
-    	<!-- <img class="w-50" src="{{imagen}}"> -->
+    	<!-- <img class="mx-auto" src="{{imagen}}"> -->
     </div>
 
 
@@ -28,8 +28,8 @@
         <h4 class="lead mb-3 text-mono text-warning">{{mensaje}}</h4>
       </div>
 
-      <button *ngFor="let opcion of opciones; let i = index;" class="btn btn-primary btn-shadow text-mono mb-2"
-              (click)="elegirOpcion(i)">{{opcion}}</button>
+      <button *ngFor="let opcion of opciones; let i = index;" [className]="mostrarClaseBoton(i)"
+        (click)="elegirOpcion(i)">{{opcion}}</button>
 
     </div>
   </div>
