@@ -17,7 +17,7 @@ export class JuegoMayormenorComponent implements OnInit {
 
   public cartasRestantes: number;
   public loader = true;
-  public blankCard = "/assets/juego-carta-exploration2.png";
+  public blankCard = "assets/juego-carta-exploration2.png";
 
   dcards = [];
   mensaje = "¡Bienvenido al juego de Mayor o Menor!";

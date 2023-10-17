@@ -1,4 +1,7 @@
-
 .mesa-cartas {
 	min-height: 450px;
+}
+
+.boton-juego {
+	width: 120px;
 }

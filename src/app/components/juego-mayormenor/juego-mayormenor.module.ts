@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { JuegoMayormenorRoutingModule } from './juego-mayormenor-routing.module';
 import { JuegoMayormenorComponent } from './juego-mayormenor.component';
 
-
 @NgModule({
   declarations: [
     JuegoMayormenorComponent

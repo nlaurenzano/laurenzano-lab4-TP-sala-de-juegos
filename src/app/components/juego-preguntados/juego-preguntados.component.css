@@ -1,0 +1,8 @@
+.mesa-cartas {
+	min-height: 450px;
+}
+
+.mesa-cartas img{
+	max-height: 400px;
+	max-width: 50%;
+}
