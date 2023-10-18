@@ -1,1 +1,49 @@
-<p>juego-simon works!</p>
+<div class="container jumbotron">
+  <div class="row">
+    <div class="col-sm jumbotron mesa-cartas bg-secondary">
+    	
+		<div class="text-center">
+			<button #boton_1 id="boton_1" class="boton-simon btn btn-primary btn-shadow text-mono" (click)="elegirOpcion(1)"> W </button>
+			<button #boton_2 id="boton_2" class="boton-simon btn btn-success btn-shadow text-mono" (click)="elegirOpcion(2)"> X </button>
+		</div>
+
+		<div class="text-center mt-2">
+			<button #boton_3 id="boton_3" class="boton-simon btn btn-light btn-shadow text-mono" (click)="elegirOpcion(3)"> Y </button>
+			<button #boton_4 id="boton_4" class="boton-simon btn btn-warning btn-shadow text-mono" (click)="elegirOpcion(4)"> Z </button>
+		</div>
+
+    </div>
+
+
+    <div class="col-sm pb-4 text-center align-self-center">
+      <div>
+        <h5 class="lead mb-3 text-mono text-info text-center">Nivel: {{nivel}}</h5>
+        <!-- <h5 class="lead mb-3 text-mono text-info text-center">Restantes: {{preguntasRestantes}}</h5> -->
+        <div>
+          <button class="btn btn-primary btn-shadow text-mono mt-2 w-50"
+            (click)="juegoNuevo()">Nuevo Juego</button>
+        </div>
+        <div>
+          <button class="btn btn-primary btn-shadow text-mono mt-2 w-50"
+            routerLink="/menu-juegos">Salir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row pb-2">
+    <div class="col-sm text-center">
+      <div>
+        <h4 class="lead mb-3 text-mono text-warning">{{mensaje}}</h4>
+      </div>
+<!-- 
+      <button *ngFor="let opcion of opciones; let i = index;" [className]="mostrarClaseBoton(i)"
+        (click)="elegirOpcion(i)">{{opcion}}</button>
+ -->
+    </div>
+  </div>
+
+</div>
+
+<!-- <p [hidden]="!loader">Cargando...</p> -->

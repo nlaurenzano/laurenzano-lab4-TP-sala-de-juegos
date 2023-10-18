@@ -19,15 +19,16 @@ export class JuegoPreguntadosComponent implements OnInit {
   private nroPersonajes: number;
   private nrosUsados = [];
   private opcionesTemp = [];
+  private jugando = false;
 
   private claseBoton = 'btn btn-primary btn-shadow text-mono mb-2';
 
   private claseBotonDefault = 'btn btn-primary btn-shadow text-mono mb-2';
   private claseBotonCorrecta = this.claseBotonDefault;
 
-  public mensaje = "¡Bienvenido al juego Preguntados, edición Marvel!";
+  public mensaje = '¡Bienvenido al juego Preguntados, edición Marvel!';
   public loader = false;
-  public imagen: string;
+  public imagen: string = 'assets/juego-preguntados-logo.png';
   public nombreCorrecto: string;
   public opciones = [];
   public aciertos = 0;
@@ -39,11 +40,11 @@ export class JuegoPreguntadosComponent implements OnInit {
     this.juegoService.obtenerDatosIniciales()
       .subscribe( (resultado) => {
         this.nroPersonajes = resultado.data.total;
-        this.juegoNuevo();
       });
   }
 
   juegoNuevo() {
+    this.mensaje = '¡Empecemos!';
     this.loader = true;
     this.nrosUsados = [];
     this.preguntasRestantes = 20;
@@ -113,11 +114,15 @@ export class JuegoPreguntadosComponent implements OnInit {
     if (this.opcionesTemp.length == 4) {
       this.opcionesTemp.sort(function(){return 0.5 - Math.random()}); 
       this.opciones = this.opcionesTemp;
+      this.jugando = true;
     }
   }
 
   elegirOpcion( opcion ) {
-    this.evaluarRespuesta( opcion );
+    if ( this.jugando == true ) {
+      this.jugando = false;
+      this.evaluarRespuesta( opcion );
+    }
   }
 
   evaluarRespuesta( opcion ) {
