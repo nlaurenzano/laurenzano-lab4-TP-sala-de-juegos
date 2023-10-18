@@ -28,7 +28,7 @@ export class JuegoPreguntadosComponent implements OnInit {
 
   public mensaje = '¡Bienvenido al juego Preguntados, edición Marvel!';
   public loader = false;
-  public imagen: string = 'assets/juego-preguntados-logo.png';
+  public imagen: string = 'assets/juego-preguntados-logo-e.png';
   public nombreCorrecto: string;
   public opciones = [];
   public aciertos = 0;
