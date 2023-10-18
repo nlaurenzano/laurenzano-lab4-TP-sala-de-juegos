@@ -63,7 +63,7 @@ export class JuegoSimonComponent {
 
       await this.sleep(500);
       this.botones[i].nativeElement.classList.add('active');
-      await this.sleep(1000);
+      await this.sleep(700);
       this.botones[i].nativeElement.classList.remove('active');
 
     }
