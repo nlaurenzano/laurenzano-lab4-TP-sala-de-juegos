@@ -1,7 +1,15 @@
+@import url(https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css);
+
 .mesa-cartas {
 	min-height: 450px;
 }
 
 .boton-juego {
 	width: 120px;
+}
+
+.loader {
+	max-height: 351px;
+	display: block;
+  	margin: auto;
 }

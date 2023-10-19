@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoPreguntadosService } from './juego-preguntados.service';
+import Toastify from 'toastify-js';
 
 @Component({
   selector: 'app-juego-preguntados',
@@ -20,11 +21,14 @@ export class JuegoPreguntadosComponent implements OnInit {
   private nrosUsados = [];
   private opcionesTemp = [];
   private jugando = false;
-
   private claseBoton = 'btn btn-primary btn-shadow text-mono mb-2';
-
   private claseBotonDefault = 'btn btn-primary btn-shadow text-mono mb-2';
   private claseBotonCorrecta = this.claseBotonDefault;
+  private imagenLoader: string = 'assets/loader.gif';
+  private instrucciones = 'Se muestra al jugador la imagen de un personaje del universo Marvel. '+
+    'Se debe indicar el nombre del personaje, seleccionando la opción correcta en los botones con las opciones sugeridas. '+
+    'Se suma un punto por cada nombre correcto.\n'+
+    'El juego termina cuando se completan todas imágenes (un contador muestra cuántas faltan).';
 
   public mensaje = '¡Bienvenido al juego Preguntados, edición Marvel!';
   public loader = false;
@@ -47,13 +51,13 @@ export class JuegoPreguntadosComponent implements OnInit {
     this.mensaje = '¡Empecemos!';
     this.loader = true;
     this.nrosUsados = [];
-    this.preguntasRestantes = 20;
+    this.preguntasRestantes = 30;
     this.aciertos = 0;
     this.armarPregunta();
   }
 
   armarPregunta() {
-    this.imagen = '';
+    this.imagen = this.imagenLoader;
     this.opciones = [];
     this.opcionesTemp = [];
 
@@ -161,6 +165,20 @@ export class JuegoPreguntadosComponent implements OnInit {
     } else {
       return this.claseBotonDefault;
     }
+  }
+
+  mostrarInstrucciones() {
+    Toastify({
+      text: this.instrucciones,
+      duration: 7000,
+      position: 'center',
+      gravity: 'top',
+      offset: { y: '10em' },
+      className: 'text-white text-mono w-50',
+      close: true,
+      stopOnFocus: true,
+      style: { background: "#17b06b" }
+    }).showToast();
   }
 
 }

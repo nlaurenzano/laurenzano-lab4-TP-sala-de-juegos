@@ -1,10 +1,10 @@
 <div class="container jumbotron">
   <div class="row">
     <div class="col-sm jumbotron mesa-cartas bg-success">
-      <span *ngFor="let card of dcards">
+      <img src="{{imagenLoader}}" [hidden]="!loader" class="loader">
+      <span [hidden]="loader" *ngFor="let card of dcards">
         <img class="w-50" [src]="card.blankCard">
       </span>
-
     </div>
 
     <div class="col-sm pb-4 text-center align-self-center">
@@ -13,6 +13,10 @@
         <div>
           <button class="btn btn-primary btn-shadow text-mono mt-2 w-50"
             (click)="juegoNuevo()">Nuevo Juego</button>
+        </div>
+        <div>
+          <button class="btn btn-primary btn-shadow text-mono mt-2 w-50"
+            (click)="mostrarInstrucciones()">Instrucciones</button>
         </div>
         <div>
           <button class="btn btn-primary btn-shadow text-mono mt-2 w-50"
@@ -34,5 +38,3 @@
     </div>
   </div>
 </div>
-
-<!-- <p [hidden]="!loader">Cargando...</p> -->

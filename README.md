@@ -50,6 +50,21 @@ Sprint 2: Entrega en Clase 04 - 21/9
 	  }
 
 
+Sprint 3 (Clase 04)
+'''''''''''''''''''
+
+-	Incorporar el chat:
+	-	Solamente usuarios logueados podrán acceder a la sala de chat.
+	-	Debemos marcar el usuario y hora que envió el mensaje
+-	Incorporar módulos y loadchildren.
+-	Incorporar los juegos:
+	-	Ahorcado:
+		-	No se debe ingresar datos desde el teclado. Utilizar botones para el ingreso de las letras.
+	-	Mayor o Menor:
+		-	Desde un mazo de carta se va a preguntar si la siguiente es mayor o menor.
+			El jugador sumará un punto ante cada carta que adivine.
+
+
 Sprint 4 (Clase 05)
 '''''''''''''''''''
 
