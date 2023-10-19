@@ -10,15 +10,21 @@
     <form>
       <div class="form-group">
         <input name="nombre" #nombre type="email" [value]="fillEmail" class="form-control mb-3" autofocus="true" required="true" placeholder="Email" />
-        <!-- aria-describedby="emailHelp" -->
-        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email</small> -->
 
         <input name="clave" #clave type="password" [value]="fillClave" class="form-control mb-3" required="true" placeholder="Clave" />
       </div>
 
       <div class="mx-auto text-center">
         <input type="button" name="Login" value="Ingresar" class="btn btn-outline-primary m-1" (click)="authenticationService.signIn(nombre.value, clave.value)" />
-        <input type="button" name="fill" value="Completar Campos" class="btn btn-outline-primary m-1" (click)="completarCampos()" />
+
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Completar Campos</button>
+        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+          <a class="dropdown-item" (click)="completarCampos(0)">test2</a>
+          <a class="dropdown-item" (click)="completarCampos(1)">test3</a>
+          <a class="dropdown-item" (click)="completarCampos(2)">test5</a>
+          <!-- <a class="dropdown-item" href="#">Another action</a> -->
+        </div>
 
         <div class="lead mt-3 mb-1 text-mono text-info">¿Primera vez por aquí?</div>
         <input type="button" routerLink="/registro" value="Registrarse" class="btn btn-outline-primary" />

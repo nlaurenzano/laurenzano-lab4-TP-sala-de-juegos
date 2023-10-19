@@ -11,14 +11,16 @@ export class LoginComponent implements OnInit {
   fillEmail: string = '';
   fillClave: string = '';
 
+  private usuarios = ['test2@test.com','test3@lab4.com','test5@lab4.com'];
+
   constructor( public authenticationService: AuthenticationService ) { }
 
   ngOnInit(){}
 
   ngOnDestroy() { }
 
-  completarCampos() {
-    this.fillEmail = "test5@lab4.com";
+  completarCampos( id ) {
+    this.fillEmail = this.usuarios[id];
     this.fillClave = "password";
   }
 
