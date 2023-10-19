@@ -1,15 +1,15 @@
 <div class="container jumbotron">
   <div class="row">
-    <div class="col-sm jumbotron mesa-cartas bg-success">
-      <img src="{{imagenLoader}}" [hidden]="!loader" class="loader">
-      <span [hidden]="loader" *ngFor="let card of dcards">
-        <img class="w-50" [src]="card.blankCard">
-      </span>
+    <div class="col-sm jumbotron mesa-cartas bg-secondary">
+    	<img src="{{imagen}}">
+      <footer class="blockquote-footer atribucion text-dark">Data provided by Marvel. © 2014 Marvel</footer>
     </div>
+
 
     <div class="col-sm pb-4 text-center align-self-center">
       <div>
-        <h5 class="lead mb-3 text-mono text-info text-center">Cartas restantes: {{cartasRestantes}}</h5>
+        <h5 class="lead mb-3 text-mono text-info text-center">Aciertos: {{aciertos}}</h5>
+        <h5 class="lead mb-3 text-mono text-info text-center">Restantes: {{preguntasRestantes}}</h5>
         <div>
           <button class="btn btn-primary btn-shadow text-mono mt-2 w-50"
             (click)="juegoNuevo()">Nuevo Juego</button>
@@ -31,10 +31,13 @@
       <div>
         <h4 class="lead mb-3 text-mono text-warning">{{mensaje}}</h4>
       </div>
-      <button class="btn btn-primary btn-shadow boton-juego text-mono"
-              (click)="elegirMayor()">Mayor</button>
-      <button class="btn btn-primary btn-shadow boton-juego text-mono"
-              (click)="elegirMenor()">Menor</button>
+
+      <button *ngFor="let opcion of opciones; let i = index;" [className]="mostrarClaseBoton(i)"
+        (click)="elegirOpcion(i)">{{opcion}}</button>
+
     </div>
   </div>
+  
 </div>
+
+<!-- <p [hidden]="!loader">Cargando...</p> -->

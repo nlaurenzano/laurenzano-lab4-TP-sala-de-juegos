@@ -1,4 +1,14 @@
-<button class="btn btn-primary btn-shadow text-mono"
-  (click)="newGameSubject.next($event)">
-  Nuevo Juego
-</button>
+<div>
+  <button class="btn btn-primary btn-shadow text-mono w-50"
+    (click)="newGameSubject.next($event)">
+    Nuevo Juego
+  </button>
+</div>
+<div>
+  <button class="btn btn-primary btn-shadow text-mono mt-2 w-50"
+    (click)="mostrarInstrucciones()">Instrucciones</button>
+</div>
+<div>
+  <button class="btn btn-primary btn-shadow text-mono mt-2 w-50"
+    routerLink="/menu-juegos">Salir</button>
+</div>

@@ -48,3 +48,36 @@ Sprint 2: Entrega en Clase 04 - 21/9
 	  "angularCompilerOptions": {
 	    "strictTemplates": false
 	  }
+
+
+Sprint 3 (Clase 04)
+'''''''''''''''''''
+
+-	Incorporar el chat:
+	-	Solamente usuarios logueados podrán acceder a la sala de chat.
+	-	Debemos marcar el usuario y hora que envió el mensaje
+-	Incorporar módulos y loadchildren.
+-	Incorporar los juegos:
+	-	Ahorcado:
+		-	No se debe ingresar datos desde el teclado. Utilizar botones para el ingreso de las letras.
+	-	Mayor o Menor:
+		-	Desde un mazo de carta se va a preguntar si la siguiente es mayor o menor.
+			El jugador sumará un punto ante cada carta que adivine.
+
+
+Sprint 4 (Clase 05)
+'''''''''''''''''''
+
+- Agregar el juego Preguntados
+	- Tiene que obtener las imágenes de una api.
+	- Realizar el llamado a la api desde un Service.
+	- Dar al jugador opciones de elección. No se puede ingresar datos por teclado.
+
+- Juego propio
+	- Realizar juego propio.
+		- Juegos que no se pueden utilizar
+			- TATETI
+			- MEMOTEST
+			- PIEDRA PAPEL O TIJERA
+	- Agregar descripción de su juego en la sección “Quién soy”. Debe contar con información de qué juego es y cómo se juega.
+

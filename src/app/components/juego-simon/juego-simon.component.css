@@ -1,0 +1,11 @@
+@import url(https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css);
+
+.boton-simon {
+	height: 100px;
+	width: 100px;
+}
+
+.boton-simon img {
+/*	width: 70px;*/
+	height: 70px;
+}

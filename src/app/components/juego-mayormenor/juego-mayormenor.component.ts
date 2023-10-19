@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JuegoMayormenorService } from './juego-mayormenor.service';
 import { Mazo } from './mazo';
 import { Cartas } from './cartas';
-
-// TODO: Ver si es necesario lo de 'providers'
+import Toastify from 'toastify-js';
 
 @Component({
   selector: 'app-juego-mayormenor',
@@ -14,10 +13,14 @@ import { Cartas } from './cartas';
 export class JuegoMayormenorComponent implements OnInit {
 
   private deck_id: string;
+  private instrucciones = 'Se muestra al jugador una carta al azar y se espera que apueste si la carta siguiente es mayor o menor.'+
+    'Un contador indicará cuántas cartas faltan para terminar el mazo. Cuantas más cartas se adivinen, más alto será el puntaje.\n'+
+    'El juego termina cuando el jugador pierda una apuesta o cuando se termina el mazo.'
 
   public cartasRestantes: number;
   public loader = true;
-  public blankCard = "/assets/juego-carta-exploration2.png";
+  public imagenLoader: string = 'assets/loader.gif';
+  public blankCard = "assets/juego-carta-exploration2.png";
 
   dcards = [];
   mensaje = "¡Bienvenido al juego de Mayor o Menor!";
@@ -35,14 +38,12 @@ export class JuegoMayormenorComponent implements OnInit {
 
   juegoNuevo() {
     this.loader = true;
-
     this.juegoService.newGame( this.deck_id )
       .subscribe(
         ( decks:Mazo ) => {
           // Mezcla el mazo, toma las dos primeras cartas
           this.inicializarMazo();
         });
-
   }
 
   // Toma las dos primeras cartas
@@ -163,6 +164,20 @@ export class JuegoMayormenorComponent implements OnInit {
         resultado = Number(valor);
     }
     return resultado;
+  }
+
+  mostrarInstrucciones() {
+    Toastify({
+      text: this.instrucciones,
+      duration: 7000,
+      position: 'center',
+      gravity: 'top',
+      offset: { y: '10em' },
+      className: 'text-white text-mono w-50',
+      close: true,
+      stopOnFocus: true,
+      style: { background: "#17b06b" }
+    }).showToast();
   }
   
 }

@@ -13,6 +13,8 @@ const routes: Routes = [
     { path: 'menu-juegos', loadChildren: () => import('./components/menu-juegos/menu-juegos.module').then(m => m.MenuJuegosModule) },
     { path: 'juego-ahorcado', loadChildren: () => import('./components/juego-ahorcado/juego-ahorcado.module').then(m => m.JuegoAhorcadoModule) },
     { path: 'juego-mayormenor', loadChildren: () => import('./components/juego-mayormenor/juego-mayormenor.module').then(m => m.JuegoMayormenorModule) },
+    { path: 'juego-preguntados', loadChildren: () => import('./components/juego-preguntados/juego-preguntados.module').then(m => m.JuegoPreguntadosModule) },
+    { path: 'juego-simon', loadChildren: () => import('./components/juego-simon/juego-simon.module').then(m => m.JuegoSimonModule) },
     { path:"**", component: NotFoundComponent }
   ];
 
